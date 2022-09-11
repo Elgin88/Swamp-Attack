@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     private string _shoot = "Shoot";
     private string _idle = "Idle";
     private int _currentHealth;
+    private int _currentMoney;
 
     private void Start()
     {
@@ -23,6 +24,7 @@ public class Player : MonoBehaviour
         _shootPoint = GetComponentInChildren<ShootPoint>().transform;
 
         _currentHealth = _maxHealth;
+        _currentMoney = _money;
         _currentWeapon = _weapons[0];
 
         _animator.Play(_idle);
@@ -42,5 +44,10 @@ public class Player : MonoBehaviour
 
             yield return null;           
         }       
+    }
+
+    public void TakeMoney (int money)
+    {
+        _currentMoney += money;
     }
 }
