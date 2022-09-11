@@ -7,10 +7,10 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] private int _maxHealth = 100;
-    [SerializeField] private int _money = 0;
-    [SerializeField] private Transform _shootPoint;
+    [SerializeField] private int _money = 0;    
     [SerializeField] private List<Weapon> _weapons;
 
+    private Transform _shootPoint;
     private Animator _animator;
     private Weapon _currentWeapon;
     private string _shoot = "Shoot";
@@ -20,16 +20,14 @@ public class Player : MonoBehaviour
     private void Start()
     {
         _animator = GetComponent<Animator>();
+        _shootPoint = GetComponentInChildren<ShootPoint>().transform;
 
         _currentHealth = _maxHealth;
         _currentWeapon = _weapons[0];
-        
-        StartCoroutine(Shoot());
-    }
 
-    private void Update()
-    {
         _animator.Play(_idle);
+
+        StartCoroutine(Shoot());
     }
 
     private IEnumerator Shoot()

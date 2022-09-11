@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public abstract class Weapon : MonoBehaviour
 {
-    [SerializeField] private Bullet _bullet;
+    [SerializeField] private Bullet _bullet;    
 
     public Bullet Bullet => _bullet;
 
