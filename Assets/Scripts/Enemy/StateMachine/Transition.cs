@@ -4,17 +4,18 @@ using UnityEngine;
 
 public abstract class Transition : MonoBehaviour
 {
-    [SerializeField] private State _nextState;
-
-    public State NextState => _nextState;
+    [SerializeField] State _nextState;
 
     public Player Target { get; private set; }
-
     public bool NeedTransit { get; protected set; }
+    public State NextState => _nextState;
 
-    private 
+    public void OnEnable()
+    {
+        NeedTransit = false;
+    }
 
-    public void Init(Player target)
+    public void Init (Player target)
     {
         Target = target;
     }

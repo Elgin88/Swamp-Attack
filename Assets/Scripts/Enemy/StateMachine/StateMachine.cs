@@ -4,48 +4,43 @@ using UnityEngine;
 
 public class StateMachine : MonoBehaviour
 {
-    [SerializeField] private Player _target;
     [SerializeField] private State _firstState;
+    [SerializeField] private Player _target;
 
     private State _currentState;
 
     private void Start()
     {
-        _currentState = _firstState;
-        Reset(_firstState);
-        StartCoroutine(ChangeState());
+        SetFirstState(_firstState);
     }
 
-    private IEnumerator ChangeState()
+    private void Update()
     {
-        while (true)
-        {
-            if (_currentState == null)
-                yield return null;
-
-            State nextState = _currentState.TryGetNextState();            
-
-            if (nextState != null)
-                NextState(nextState);
-
-            yield return null;
-        }        
+        if (_currentState == null)
+            return;
+        
+        State nextState = _currentState.TryGetNextState();
+        
+        if (nextState != null)            
+            Transit (nextState);    
     }
 
-    private void Reset (State fistState)
+    private void SetFirstState(State firstState)
     {
-        if (fistState != null)
-            fistState.Enter(_target);
-    }
-
-    private void NextState (State nextState)
-    {
-        if (_currentState != null)        
-            _currentState.Exit();
-
-        _currentState = nextState;
+        _currentState = firstState;
 
         if (_currentState != null)
             _currentState.Enter(_target);
-    }    
+    }
+
+    private void Transit(State nextState)
+    {
+        if (_currentState != null)
+            _currentState.Exit();        
+
+        _currentState = nextState;
+        
+        if (_currentState != null)
+            _currentState.Enter(_target);        
+    }
 }

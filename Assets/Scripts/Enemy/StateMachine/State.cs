@@ -8,17 +8,12 @@ public abstract class State : MonoBehaviour
 
     public Player Target { get; private set; }
 
-    private void Start()
-    {
-        enabled = false;          
-    }
-
     public void Enter(Player target)
     {
         enabled = true;
-        Target = target;        
+        Target = target;
 
-        foreach (Transition transition in _transitions)
+        foreach (var transition in _transitions)
         {
             transition.enabled = true;
             transition.Init(Target);
@@ -27,7 +22,7 @@ public abstract class State : MonoBehaviour
 
     public void Exit()
     {
-        foreach (Transition transition in _transitions)
+        foreach (var transition in _transitions)
         {
             transition.enabled = false;
         }
@@ -37,9 +32,9 @@ public abstract class State : MonoBehaviour
 
     public State TryGetNextState()
     {
-        foreach (Transition transition in _transitions)
+        foreach (var transition in _transitions)
         {
-            if (transition.NeedTransit)
+            if (transition.NeedTransit == true)
             {
                 return transition.NextState;
             }
