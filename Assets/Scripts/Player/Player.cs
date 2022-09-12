@@ -6,11 +6,11 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private int _maxHealth = 100;
-    [SerializeField] private int _money = 0;    
+    [SerializeField] private Transform _shootPoint;
     [SerializeField] private List<Weapon> _weapons;
-
-    private Transform _shootPoint;
+    [SerializeField] private int _maxHealth = 100;
+    [SerializeField] private int _money = 0; 
+    
     private Animator _animator;
     private Weapon _currentWeapon;
     private string _shoot = "Shoot";
@@ -21,7 +21,6 @@ public class Player : MonoBehaviour
     private void Start()
     {
         _animator = GetComponent<Animator>();
-        _shootPoint = GetComponentInChildren<ShootPoint>().transform;
 
         _currentHealth = _maxHealth;
         _currentMoney = _money;
@@ -49,5 +48,14 @@ public class Player : MonoBehaviour
     public void TakeMoney (int money)
     {
         _currentMoney += money;
+    }
+
+    public void ApplyDamage(int damage)
+    {
+        _currentHealth -= damage;
+        _currentHealth = Mathf.Clamp(_currentHealth, 0, _maxHealth);
+
+        if (_currentHealth == 0)
+            Destroy(gameObject);
     }
 }
