@@ -6,14 +6,17 @@ public abstract class State : MonoBehaviour
 {
     [SerializeField] private List<Transition> _transitions;
 
-    private Coroutine _stateWork;
-    
     public Player Target { get; private set; }
+
+    private void Start()
+    {
+        enabled = false;          
+    }
 
     public void Enter(Player target)
     {
-        Target = target;
-        _stateWork = StartCoroutine(StateWork());
+        enabled = true;
+        Target = target;        
 
         foreach (Transition transition in _transitions)
         {
@@ -29,7 +32,7 @@ public abstract class State : MonoBehaviour
             transition.enabled = false;
         }
 
-        StopCoroutine(_stateWork);
+        enabled = false;
     }
 
     public State TryGetNextState()
@@ -44,6 +47,4 @@ public abstract class State : MonoBehaviour
 
         return null;
     }
-
-    public abstract IEnumerator StateWork();
 }

@@ -6,11 +6,22 @@ using UnityEngine;
 
 public class StateCelebration : State
 {
-    public override IEnumerator StateWork()
+    private Animator _animator;
+    private string _celebration = "Celebration";
+
+    private void Start()
     {
-        while (true)
-        {
-            yield return null;
-        }
+        enabled = false;
+    }
+
+    private void OnEnable()
+    {
+        _animator = GetComponent<Animator>();
+        _animator.Play(_celebration);      
+    }
+
+    private void OnDisable()
+    {
+        _animator.StopPlayback();
     }
 }
