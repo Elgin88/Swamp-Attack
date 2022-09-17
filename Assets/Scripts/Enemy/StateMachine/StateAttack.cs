@@ -10,25 +10,31 @@ public class StateAttack : State
     [SerializeField] private float _delay;
 
     private Animator _animator;
-    private float _timeAfterLastAttack;
-    private string _attack = "Attack";   
+    private string _attack = "Attack";
 
     private void Start()
     {
         _animator = GetComponent<Animator>();
-        _timeAfterLastAttack = _delay;
     }
 
-    private void Update()
+    public override void StartStateWork()
     {
-        if (_timeAfterLastAttack >= _delay)
+        StartCoroutine(Attack());
+    }
+
+    public override void StopStateWork()
+    {
+        StopCoroutine(Attack());
+    }
+
+    private IEnumerator Attack()
+    {
+        while (true)
         {
             _animator.Play(_attack);
-            _timeAfterLastAttack = 0;
             Target.ApplyDamage(_damage);
+
+            yield return new WaitForSeconds(_delay);
         }
-
-        _timeAfterLastAttack += Time.deltaTime;        
     }
-
 }

@@ -4,11 +4,26 @@ using UnityEngine;
 
 public class TransitionTargetDie : Transition
 {
-    private void Update()
+    public override void StartTransitionWork()
     {
-        if (Target == null)
+        StartCoroutine(CheckDied());
+        NeedTransit = false;
+    }
+
+    public override void StopTransitionWork()
+    {
+        StopCoroutine(CheckDied());
+        NeedTransit = false;
+    }
+
+    private IEnumerator CheckDied()
+    {
+        while (true)
         {
-            NeedTransit = true;
+            if (Target == null)
+                NeedTransit = true;
+
+            yield return null;
         }
     }
 }

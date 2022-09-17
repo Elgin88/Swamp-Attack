@@ -7,16 +7,33 @@ public class TransitionDistance : Transition
     [SerializeField] private float _transitionDistande;
     [SerializeField] private float _distanceRange;
 
-    private void Start()
+    public override void StartTransitionWork()
     {
-        _transitionDistande += Random.Range(- _distanceRange, _distanceRange);
+        NeedTransit = false;
+        _transitionDistande += Random.Range(-_distanceRange, _distanceRange);
+        StartCoroutine(CheckDistance());
     }
 
-    private void Update()
+    public override void StopTransitionWork()
     {
-        if (Vector2.Distance(transform.position, Target.transform.position) < _transitionDistande)
+        StopCoroutine(CheckDistance());        
+    }
+
+    private IEnumerator CheckDistance()
+    {
+        Debug.Log("1");
+
+        while (true)
         {
-            NeedTransit = true;
+            Debug.Log("2");
+
+            if (Vector2.Distance(transform.position, Target.transform.position) < _transitionDistande)
+            {
+                NeedTransit = true;
+                Debug.Log("2");
+            }
+            
+            yield return null;
         }
     }
 }

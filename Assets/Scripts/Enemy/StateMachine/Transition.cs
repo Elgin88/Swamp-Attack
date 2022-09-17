@@ -10,13 +10,11 @@ public abstract class Transition : MonoBehaviour
     public bool NeedTransit { get; protected set; }
     public State NextState => _nextState;
 
-    public void OnEnable()
-    {
-        NeedTransit = false;
-    }
-
     public void Init (Player target)
     {
         Target = target;
     }
+
+    public abstract void StartTransitionWork();
+    public abstract void StopTransitionWork();
 }

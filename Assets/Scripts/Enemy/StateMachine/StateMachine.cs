@@ -11,18 +11,24 @@ public class StateMachine : MonoBehaviour
 
     private void Start()
     {
-        SetFirstState(_firstState);
+        SetFirstState(_firstState);        
+        StartCoroutine(TrySetNextState());
     }
 
-    private void Update()
+    private IEnumerator TrySetNextState()
     {
-        if (_currentState == null)
-            return;
-        
-        State nextState = _currentState.TryGetNextState();
-        
-        if (nextState != null)            
-            Transit (nextState);    
+        while (true)
+        {
+            if (_currentState == null)
+                yield return null;
+
+            State nextState = _currentState.TryGetNextState();
+
+            if (nextState != null)
+                Transit(nextState);
+
+            yield return null;
+        }
     }
 
     private void SetFirstState(State firstState)

@@ -8,14 +8,18 @@ public abstract class State : MonoBehaviour
 
     public Player Target { get; private set; }
 
+    public abstract void StartStateWork();
+    public abstract void StopStateWork();
+
     public void Enter(Player target)
     {
-        enabled = true;
         Target = target;
+
+        StartStateWork();
 
         foreach (var transition in _transitions)
         {
-            transition.enabled = true;
+            transition.StartTransitionWork();
             transition.Init(Target);
         }
     }
@@ -24,10 +28,10 @@ public abstract class State : MonoBehaviour
     {
         foreach (var transition in _transitions)
         {
-            transition.enabled = false;
+            transition.StopTransitionWork();
         }
 
-        enabled = false;
+        StopStateWork();
     }
 
     public State TryGetNextState()

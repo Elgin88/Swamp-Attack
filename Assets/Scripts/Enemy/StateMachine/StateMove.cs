@@ -6,8 +6,22 @@ public class StateMove : State
 {
     [SerializeField] private float _speed;
 
-    private void Update()
+    public override void StartStateWork()
     {
-        transform.position = Vector2.MoveTowards(transform.position, Target.transform.position, _speed * Time.deltaTime);
+        StartCoroutine(StateWork());
+    }
+
+    public override void StopStateWork()
+    {
+        StopCoroutine(StateWork());
+    }
+
+    public  IEnumerator StateWork()
+    {
+        while (true)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, Target.transform.position, _speed * Time.deltaTime);
+            yield return null;
+        }        
     }
 }

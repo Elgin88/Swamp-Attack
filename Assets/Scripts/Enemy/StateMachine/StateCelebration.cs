@@ -19,4 +19,14 @@ public class StateCelebration : State
     {
         _animator.StopPlayback();
     }
+
+    public override void StartStateWork()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void StopStateWork()
+    {
+        throw new System.NotImplementedException();
+    }
 }
