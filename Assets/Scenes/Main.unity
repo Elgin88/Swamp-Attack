@@ -1147,8 +1147,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transitions:
   - {fileID: 1248181774}
+  <Target>k__BackingField: {fileID: 0}
   _damage: 20
   _delay: 1
+  _animator: {fileID: 0}
+  _attack: Attack
 --- !u!114 &1248181769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1161,9 +1164,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cedc20d16d1d36c489c909a1894fb0db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _nextState: {fileID: 1248181768}
-  _transitionDistande: 2
-  _distanceRange: 0.5
 --- !u!114 &1248181770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1176,9 +1176,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a1025652cdd0a740bbee4d07c1db205, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _transitions:
-  - {fileID: 1248181769}
-  _speed: 5
 --- !u!114 &1248181771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1193,6 +1190,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _firstState: {fileID: 1248181770}
   _target: {fileID: 620891481}
+  _currentState: {fileID: 0}
 --- !u!114 &1248181772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1219,6 +1217,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transitions: []
+  <Target>k__BackingField: {fileID: 0}
+  _animator: {fileID: 0}
+  _celebration: Celebration
 --- !u!114 &1248181774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1232,6 +1233,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _nextState: {fileID: 1248181773}
+  <Target>k__BackingField: {fileID: 0}
+  <NeedTransit>k__BackingField: 0
 --- !u!1 &1458044407
 GameObject:
   m_ObjectHideFlags: 0
