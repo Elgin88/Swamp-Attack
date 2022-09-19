@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StateMove : MonoBehaviour
+public class StateMove : State
 {
 
 
