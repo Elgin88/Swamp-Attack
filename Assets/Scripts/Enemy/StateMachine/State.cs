@@ -4,13 +4,17 @@ using UnityEngine;
 
 public abstract class State : MonoBehaviour
 {
-    [SerializeField] private List<Transition> _transitions;    
+    [SerializeField] private List<Transition> _transitions;
+
+    private Coroutine _stateWork;
     
     public Player Target { get; private set; }
 
     public void Enter (Player player)
     {
         Target = player;
+
+        StartStateWork();
 
         foreach (var transition in _transitions)
         {
@@ -21,10 +25,13 @@ public abstract class State : MonoBehaviour
 
     public void Exit()
     {
+
         foreach (var transition in _transitions)
         {
-            transition.StopTransitWork();
+            transition.StopTransitWork();            
         }
+        
+        StopStateWork();      
     }
 
     public State TryGetNextState()
@@ -33,10 +40,22 @@ public abstract class State : MonoBehaviour
         {
             if (transition.NeedTransit)
             {
-                return transition.NextState;
+                return transition.NextState;                
             }
         }
 
         return null;
     }
+
+    public void StartStateWork()
+    {
+        _stateWork = StartCoroutine(StateWork());
+    }
+
+    public void StopStateWork()
+    {
+        StopCoroutine(_stateWork);
+    }
+
+    public abstract IEnumerator StateWork();
 }

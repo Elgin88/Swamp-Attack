@@ -1010,12 +1010,12 @@ GameObject:
   - component: {fileID: 1248181764}
   - component: {fileID: 1248181767}
   - component: {fileID: 1248181772}
-  - component: {fileID: 1248181771}
   - component: {fileID: 1248181770}
   - component: {fileID: 1248181769}
   - component: {fileID: 1248181768}
-  - component: {fileID: 1248181774}
+  - component: {fileID: 1248181771}
   - component: {fileID: 1248181773}
+  - component: {fileID: 1248181774}
   m_Layer: 0
   m_Name: Minotaur
   m_TagString: Untagged
@@ -1142,16 +1142,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1248181763}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c425ae8db83a26b429e070356453230c, type: 3}
+  m_Script: {fileID: 11500000, guid: cedc20d16d1d36c489c909a1894fb0db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _transitions:
-  - {fileID: 1248181774}
-  <Target>k__BackingField: {fileID: 0}
-  _damage: 20
-  _delay: 1
-  _animator: {fileID: 0}
-  _attack: Attack
+  _nextState: {fileID: 1248181771}
+  _distanceRange: 2
+  _rangeSpred: 0.2
 --- !u!114 &1248181769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1161,9 +1157,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1248181763}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cedc20d16d1d36c489c909a1894fb0db, type: 3}
+  m_Script: {fileID: 11500000, guid: 9a1025652cdd0a740bbee4d07c1db205, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _transitions:
+  - {fileID: 1248181768}
+  _speed: 5
 --- !u!114 &1248181770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1171,11 +1170,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1248181763}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a1025652cdd0a740bbee4d07c1db205, type: 3}
+  m_Script: {fileID: 11500000, guid: 70398931e733f4a09aaea19e88688d3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _target: {fileID: 620891481}
+  _fistState: {fileID: 1248181769}
 --- !u!114 &1248181771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1185,12 +1186,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1248181763}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 318304ef697f11b40a2dcf32d3226e54, type: 3}
+  m_Script: {fileID: 11500000, guid: b09abbe76e13c45188bc4934f9879a8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _firstState: {fileID: 1248181770}
-  _target: {fileID: 620891481}
-  _currentState: {fileID: 0}
+  _transitions:
+  - {fileID: 1248181773}
+  _damage: 10
+  _delayBetweenAttack: 0.8
+  _delayAnimation: 0.2
 --- !u!114 &1248181772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1211,15 +1214,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1248181763}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a5e0685126dbfd4c82b32e9f2c2cd6d, type: 3}
+  m_Script: {fileID: 11500000, guid: d364241021aa4402b8e7d41ffbe18211, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _transitions: []
-  <Target>k__BackingField: {fileID: 0}
-  _animator: {fileID: 0}
-  _celebration: Celebration
+  _nextState: {fileID: 1248181774}
 --- !u!114 &1248181774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1227,14 +1227,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1248181763}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6981eb6e83aa44a4e8f4d4563466e1e1, type: 3}
+  m_Script: {fileID: 11500000, guid: ea9df460915ff4b1e90ad44260bab06b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _nextState: {fileID: 1248181773}
-  <Target>k__BackingField: {fileID: 0}
-  <NeedTransit>k__BackingField: 0
+  _transitions: []
 --- !u!1 &1458044407
 GameObject:
   m_ObjectHideFlags: 0

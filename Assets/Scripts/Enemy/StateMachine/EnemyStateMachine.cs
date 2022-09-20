@@ -22,7 +22,7 @@ public class EnemyStateMachine : MonoBehaviour
         if (_currentState!= null)
         {
             _currentState.Enter(_target);
-        }        
+        }
     }
 
     private IEnumerator TrySetNextState()
@@ -33,7 +33,7 @@ public class EnemyStateMachine : MonoBehaviour
 
             if (nextState != null)
             {
-                Transit(nextState);
+                Transit(nextState);                
             }
 
             yield return null;

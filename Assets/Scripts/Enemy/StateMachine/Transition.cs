@@ -6,6 +6,8 @@ public abstract class Transition : MonoBehaviour
 {
     [SerializeField] private State _nextState;
 
+    private Coroutine _transitionWork;
+
     public State NextState => _nextState;
 
     public Player Target { get; private set; }
@@ -19,16 +21,15 @@ public abstract class Transition : MonoBehaviour
 
     public void StartTransitWork()
     {
-        StartCoroutine(TransitionWork());
+        NeedTransit = false;
+
+        _transitionWork = StartCoroutine(TransitionWork());
     }
 
     public void StopTransitWork()
     {
-        StopCoroutine(TransitionWork());
+        StopCoroutine(_transitionWork);
     }
 
     public abstract IEnumerator TransitionWork();
-
-
-
 }

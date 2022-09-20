@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     private Weapon _currentWeapon;
     private string _shoot = "Shoot";
     private string _idle = "Idle";
+    public bool IsEnabled = true;
     private int _currentHealth;
     private int _currentMoney;
 
@@ -56,6 +57,8 @@ public class Player : MonoBehaviour
         _currentHealth = Mathf.Clamp(_currentHealth, 0, _maxHealth);
 
         if (_currentHealth == 0)
-            Destroy(gameObject);
+        {
+            Destroy(gameObject);            
+        }           
     }
 }
