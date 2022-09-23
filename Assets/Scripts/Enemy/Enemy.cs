@@ -5,8 +5,10 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private int _maxHealth = 100;
-    
+
     private int _currentHealth;
+
+    public Player Target { get; private set; }
 
     private void Start()
     {
@@ -20,5 +22,10 @@ public class Enemy : MonoBehaviour
 
         if (_currentHealth == 0)
             Destroy(gameObject);
+    }
+
+    public void Init(Player target)
+    {
+        Target = target;
     }
 }

@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class EnemyStateMachine : MonoBehaviour
 {
-    [SerializeField] private Player _target;
     [SerializeField] private State _fistState;
 
     private State _currentState;
+    private Player _target;
 
     private void Start()
     {
+        _target = GetComponent<Enemy>().Target;
+
         SetFirstState(_fistState);
         StartCoroutine(TrySetNextState());
     }
