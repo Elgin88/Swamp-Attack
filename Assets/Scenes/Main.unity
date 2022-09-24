@@ -464,6 +464,7 @@ GameObject:
   - component: {fileID: 620891478}
   - component: {fileID: 620891480}
   - component: {fileID: 620891481}
+  - component: {fileID: 620891482}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -530,7 +531,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 620891477}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.39, y: -4.32, z: 0}
+  m_LocalPosition: {x: 2.39, y: -4.35, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1830631194}
@@ -574,6 +575,32 @@ MonoBehaviour:
   _maxHealth: 100
   _money: 0
   IsEnabled: 1
+--- !u!61 &620891482
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 620891477}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.06173098, y: 0.50861907}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.49999997, y: 0.25347224}
+    oldSize: {x: 4.266667, y: 4.266667}
+    newSize: {x: 2.56, y: 2.56}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.80973125, y: 1.673964}
+  m_EdgeRadius: 0
 --- !u!1 &870067679
 GameObject:
   m_ObjectHideFlags: 0
@@ -1111,8 +1138,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _waves:
   - Template:
+    - {fileID: 5363088160822263270, guid: b4ca10aa735b648e1acd3009799914e7, type: 3}
     - {fileID: 191734197336209972, guid: b4816fdc6ee1e42cf98b01783edb7175, type: 3}
-    Count: 1
+    - {fileID: 5363088160822263270, guid: b4ca10aa735b648e1acd3009799914e7, type: 3}
+    - {fileID: 5363088160822263270, guid: b4ca10aa735b648e1acd3009799914e7, type: 3}
+    - {fileID: 191734197336209972, guid: b4816fdc6ee1e42cf98b01783edb7175, type: 3}
+    - {fileID: 5363088160822263270, guid: b4ca10aa735b648e1acd3009799914e7, type: 3}
+    Count: 5
     Delay: 2
   _target: {fileID: 620891481}
 --- !u!4 &1481626159
@@ -1123,7 +1155,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1481626157}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.9, y: -4.52, z: -8.000435}
+  m_LocalPosition: {x: -9.9, y: -4.36, z: -8.000435}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

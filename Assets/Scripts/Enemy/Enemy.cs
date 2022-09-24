@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private int _maxHealth = 100;
+    [SerializeField] private int _maxHealth;
+    [SerializeField] Transform _shootPoint;
 
     private int _currentHealth;
 
     public Player Target { get; private set; }
+    public Transform ShootPoint => _shootPoint;
 
     private void Start()
     {
