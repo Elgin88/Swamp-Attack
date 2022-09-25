@@ -9,15 +9,16 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform _shootPoint;
     [SerializeField] private List<Weapon> _weapons;
     [SerializeField] private int _maxHealth = 100;
-    [SerializeField] private int _money = 0; 
-    
+    [SerializeField] private int _money = 0;
+
     private Animator _animator;
     private Weapon _currentWeapon;
-    private string _shoot = "Shoot";
     private string _idle = "Idle";
-    public bool IsEnabled = true;
+    private string _shoot = "Shoot";
     private int _currentHealth;
     private int _currentMoney;
+
+    public int Money => _money;
 
     private void Start()
     {
@@ -60,5 +61,11 @@ public class Player : MonoBehaviour
         {
             Destroy(gameObject);            
         }           
+    }
+
+    public void BuyWeapon(Weapon weapon)
+    {
+        _money -= weapon.Price;
+        _weapons.Add(weapon);
     }
 }

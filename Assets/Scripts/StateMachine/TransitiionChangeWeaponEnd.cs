@@ -10,24 +10,15 @@ public class TransitiionChangeWeaponEnd : Transition
 
     public override IEnumerator TransitionWork()
     {
-        Debug.Log("1");
-
         while (true)
         {
             if (_timeAnimation > _delay)
             {
                 NeedTransit = true;
-
-
-                Debug.Log("2");
-            }
-
-            
+            }            
 
             _timeAnimation += Time.deltaTime;
-
-            Debug.Log("3");
-
+            
             yield return null;
         }        
     }
