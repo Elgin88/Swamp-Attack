@@ -39,6 +39,4 @@ public class Shop : MonoBehaviour
             view.SellButtonClick -= OnSellButtonClick;
         }
     }
-
-
 }
